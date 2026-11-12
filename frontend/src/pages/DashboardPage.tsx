@@ -20,11 +20,15 @@ import {
   recommendedCourses,
   student,
 } from "@/data/mockData";
+import { useAuth } from "@/auth/AuthContext";
 import { useLearningState } from "@/lib/learning-state";
 import { courseMatches, pathMatches } from "@/lib/search";
 
 export function DashboardPage() {
   const { search, setSearch } = useLayoutContext();
+  const { user } = useAuth();
+  // Greeting uses the signed-in user; learning stats are still mock data.
+  const firstName = user?.fullName.trim().split(/\s+/)[0] ?? student.firstName;
   const { pathProgress } = useLearningState();
   const query = search.trim();
 
@@ -42,7 +46,7 @@ export function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <WelcomeBanner student={student} resumeCourse={resumeCourse} />
+      <WelcomeBanner student={{ ...student, firstName }} resumeCourse={resumeCourse} />
 
       <section className="grid grid-cols-2 gap-4 lg:grid-cols-4" aria-label="Learning statistics">
         <StatCard

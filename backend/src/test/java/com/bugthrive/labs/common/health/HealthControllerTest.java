@@ -1,5 +1,6 @@
 package com.bugthrive.labs.common.health;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.jwt;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -36,8 +37,8 @@ class HealthControllerTest {
     }
 
     @Test
-    void unknownRouteReturnsStandardNotFound() throws Exception {
-        mockMvc.perform(get("/api/v1/does-not-exist"))
+    void unknownRouteReturnsStandardNotFoundForAuthenticatedUser() throws Exception {
+        mockMvc.perform(get("/api/v1/does-not-exist").with(jwt()))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.success").value(false))
                 .andExpect(jsonPath("$.message").value("Resource not found"))

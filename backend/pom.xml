@@ -31,10 +31,15 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- Security (configured permit-all in Phase 1; auth comes later) -->
+        <!-- Security: BCrypt passwords + stateless JWT auth -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- JWT issuing/validation (Nimbus, HS256) without a third-party JWT library -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
 
         <!-- Persistence -->

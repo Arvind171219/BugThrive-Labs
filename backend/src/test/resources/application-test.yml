@@ -6,3 +6,7 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
+app:
+  jwt:
+    secret: test-only-jwt-secret-for-automated-tests-0123456789

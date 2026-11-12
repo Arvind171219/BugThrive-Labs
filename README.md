@@ -4,14 +4,15 @@ Cybersecurity learning platform — monorepo for the web frontend and the API.
 
 ```
 bugthrive-labs/
-├── frontend/   React 18 + TypeScript + Vite + Tailwind + shadcn/ui — student dashboard (mock data)
-├── backend/    Java 21 + Spring Boot 3 + Maven — API skeleton with health endpoint
-├── docs/       Project documentation (see docs/phase-1.md)
+├── frontend/   React 18 + TypeScript + Vite + Tailwind + shadcn/ui — student dashboard, login/register (learning data still mocked)
+├── backend/    Java 21 + Spring Boot 3 + Maven — API with PostgreSQL, Flyway and JWT auth
+├── docs/       Phase docs (phase-1.md, phase-2a.md)
 └── README.md
 ```
 
-The two apps are independent: each builds and runs on its own, and the frontend does **not**
-call the backend yet.
+The two apps build and run independently. Since Phase 2A the frontend calls the backend for
+**authentication** (login, register, current user); all learning content is still mock data.
+In development, Vite proxies `/api` to `http://localhost:8080`, so start the backend first to sign in.
 
 ## Prerequisites
 
@@ -60,6 +61,7 @@ curl http://localhost:8080/api/v1/health
 
 Full details — profiles, environment variables, response format — in [backend/README.md](backend/README.md).
 
-## Phase 1 scope
+## Phase docs
 
-See [docs/phase-1.md](docs/phase-1.md) for what's included, what's deferred, and the branding tokens.
+- [docs/phase-1.md](docs/phase-1.md) — dashboard UI, backend skeleton, branding tokens
+- [docs/phase-2a.md](docs/phase-2a.md) — database, JWT authentication, login/register

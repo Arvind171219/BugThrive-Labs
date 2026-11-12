@@ -11,3 +11,8 @@ logging:
   level:
     com.bugthrive.labs: DEBUG
     org.flywaydb: INFO
+
+app:
+  jwt:
+    # Local development only — never use this value anywhere else.
+    secret: ${JWT_SECRET:dev-only-insecure-jwt-secret-change-me-0123456789abcdef}
