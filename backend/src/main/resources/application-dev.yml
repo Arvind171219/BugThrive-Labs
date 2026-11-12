@@ -1,0 +1,13 @@
+# Local development. Defaults match docker-compose.yml, so no credentials need to be set.
+
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    com.bugthrive.labs: DEBUG
+    org.flywaydb: INFO

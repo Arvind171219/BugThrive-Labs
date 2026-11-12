@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * BugThrive Labs design tokens.
+ * Values mirror the default theme of https://labs.bugthrive.com
+ * (dark navy surfaces, neon-lime primary, magenta/violet logo gradient).
+ */
+@layer base {
+  :root {
+    --background: 216 26% 7.5%;
+    --foreground: 0 0% 95%;
+    --card: 216 26% 11%;
+    --card-foreground: 0 0% 95%;
+    --popover: 216 26% 11%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 72 100% 50%;
+    --primary-foreground: 240 20% 4%;
+    --secondary: 216 26% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 216 15% 18%;
+    --muted-foreground: 216 10% 60%;
+    --accent: 216 20% 16%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 20% 20%;
+    --input: 216 20% 20%;
+    --ring: 72 100% 50%;
+    --radius: 0.5rem;
+
+    --brand-magenta: 297 100% 50%;
+    --brand-violet: 252 100% 66%;
+
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.2);
+    border-radius: 9999px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.4);
+  }
+}
+
+@layer components {
+  /* Small uppercase mono label used across the BugThrive site */
+  .eyebrow {
+    @apply font-mono text-[11px] font-bold uppercase tracking-widest text-muted-foreground;
+  }
+
+  .text-brand-gradient {
+    @apply bg-gradient-to-r from-brand-magenta to-brand-violet bg-clip-text text-transparent;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
